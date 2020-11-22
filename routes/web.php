@@ -19,4 +19,3 @@ Route::get('/{any}', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::post('/register', 'Auth\RegisterController@register')->name('register');
