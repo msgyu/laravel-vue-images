@@ -31,7 +31,11 @@
 export default {
     data() {
         return {
-            tab: 1
+            tab: 1,
+            loginForm: {
+                email: "",
+                password: ""
+            }
         };
     }
 };
