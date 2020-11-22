@@ -83,6 +83,9 @@ export default {
     methods: {
         login() {
             console.log(this.loginForm);
+        },
+        register() {
+            console.log(this.registerForm);
         }
     }
 };
