@@ -8,15 +8,20 @@ use Tests\TestCase;
 
 class LogoutApiTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
-    public function testExample()
-    {
-        $response = $this->get('/');
+    use RefreshDatabase;
 
+    public function setUp(): void
+    {
+        parent::SetUp();
+
+        $this->user = factory(User::class)->create();
+    }
+
+    public function should_user_logout()
+    {
+        $response = $this->actingAs($this->user)
+            ->json('POST', route('logout'));
         $response->assertStatus(200);
+        $this->assertGuest();
     }
 }
