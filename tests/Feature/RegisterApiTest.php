@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use App\User;
 use Tests\TestCase;
 
 class RegisterApiTest extends TestCase
@@ -13,10 +14,22 @@ class RegisterApiTest extends TestCase
      *
      * @return void
      */
-    public function testExample()
+    public function should_user_create()
     {
-        $response = $this->get('/');
+        $data = [
+            'name' => 'vuesplash user',
+            'email' => 'dummy@email.com',
+            'password' => 'test1234',
+            'password_confirmation' => 'test1234',
+        ];
 
-        $response->assertStatus(200);
+        $response = $this->json('POST', route('register'), $data);
+
+        $user = User::first();
+        $this->assertEquals($data['name'], $user->name);
+
+        $response
+            ->assertStatus(201)
+            ->assertJson(['name' => $user->name]);
     }
 }
