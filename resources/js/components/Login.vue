@@ -43,6 +43,11 @@ export default {
                 password: ""
             }
         };
+    },
+    methods: {
+        login() {
+            console.log(this.loginForm);
+        }
     }
 };
 </script>
