@@ -6,7 +6,7 @@
         </ul>
         <div class="panel" v-show="tab === 1">
             <div class="panel" v-show="tab === 1">
-                <form class="form">
+                <form class="form" @submit.prevent="login">
                     <label for="login-email">Email</label>
                     <input
                         type="text"
